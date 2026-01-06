@@ -9,40 +9,40 @@
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
             rel="stylesheet"
         />
-        <!-- Google Fonts: Cinzel cho tiêu đề cổ điển, Merriweather cho văn bản dễ đọc -->
+        <!-- Google Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <!-- Cinzel cho Logo, Be Vietnam Pro cho nội dung tiếng Việt -->
         <link
-            href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Cinzel:wght@700&display=swap"
             rel="stylesheet"
         />
 
         <style>
+            /* Font mặc định cho toàn trang là Be Vietnam Pro - Chuẩn tiếng Việt */
             body {
-                font-family: "Merriweather", serif;
+                font-family: "Be Vietnam Pro", sans-serif;
             }
-            h1,
-            h2,
-            h3,
-            .title-font {
+
+            /* Chỉ riêng chữ Bêtania dùng Cinzel */
+            .brand-font {
                 font-family: "Cinzel", serif;
             }
 
-            /* Hiệu ứng nền tối mờ */
             .bg-overlay {
                 background: linear-gradient(
-                    rgba(0, 0, 0, 0.6),
-                    rgba(0, 0, 0, 0.8)
+                    rgba(0, 0, 0, 0.5),
+                    rgba(0, 0, 0, 0.85)
                 );
             }
 
-            /* Animation xuất hiện nhẹ nhàng */
             .fade-in {
-                animation: fadeIn 1s ease-in-out;
+                animation: fadeIn 0.8s ease-in-out;
             }
-
             @keyframes fadeIn {
                 from {
                     opacity: 0;
-                    transform: translateY(20px);
+                    transform: translateY(15px);
                 }
                 to {
                     opacity: 1;
@@ -50,292 +50,377 @@
                 }
             }
 
-            /* Glassmorphism card */
+            /* Tùy chỉnh thanh cuộn */
+            ::-webkit-scrollbar {
+                width: 6px;
+            }
+            ::-webkit-scrollbar-track {
+                background: rgba(0, 0, 0, 0.1);
+            }
+            ::-webkit-scrollbar-thumb {
+                background: rgba(234, 179, 8, 0.3);
+                border-radius: 10px;
+            }
+            ::-webkit-scrollbar-thumb:hover {
+                background: rgba(234, 179, 8, 0.6);
+            }
+
             .glass-card {
-                background: rgba(255, 255, 255, 0.05);
-                backdrop-filter: blur(10px);
-                -webkit-backdrop-filter: blur(10px);
+                background: rgba(20, 20, 30, 0.7);
+                backdrop-filter: blur(16px);
+                -webkit-backdrop-filter: blur(16px);
                 border: 1px solid rgba(255, 255, 255, 0.1);
+                box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
             }
 
             .option-btn {
-                transition: all 0.3s ease;
+                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             }
             .option-btn:hover {
-                background: rgba(255, 255, 255, 0.2);
-                transform: scale(1.02);
+                background: rgba(255, 255, 255, 0.15);
+                transform: translateY(-2px);
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+                border-color: rgba(234, 179, 8, 0.5);
             }
         </style>
     </head>
     <body class="h-screen w-full overflow-hidden text-gray-100 bg-gray-900">
-        <!-- Background Image: Thánh đường cổ kính -->
+        <!-- Background -->
         <div class="absolute inset-0 z-0">
+            <!-- Đổi sang ảnh tông tối hơn chút để nổi bật chữ trắng -->
             <img
-                src="https://chnetwork.org/wp-content/uploads/2011/01/church-498525_1280.jpg"
-                alt="Ancient Cathedral"
+                src="https://res.cloudinary.com/dj6dwo8ie/image/upload/v1767673518/Apostle-Peter-1_fhuu9d.webp"
+                alt="Quiet Night"
                 class="w-full h-full object-cover"
             />
             <div class="absolute inset-0 bg-overlay"></div>
         </div>
 
-        <!-- Main Content Area -->
-        <div
-            class="relative z-10 flex flex-col items-center justify-center h-full px-4 text-center"
-        >
-            <!-- View 1: Trang Chủ - Chọn Vấn Đề -->
-            <div id="home-view" class="fade-in max-w-2xl w-full">
-                <div class="mb-8">
-                    <i
-                        class="fas fa-church text-5xl text-yellow-500 mb-4 opacity-80"
-                    ></i>
-                    <h1
-                        class="text-4xl md:text-5xl font-bold text-yellow-100 mb-2"
-                    >
-                        Bêtania
-                    </h1>
-                    <p class="text-gray-300 italic text-sm md:text-base">
-                        "Nơi dừng chân bình yên cho tâm hồn"
-                    </p>
-                    <p class="mt-6 text-lg text-gray-200">
-                        Chào bạn, hôm nay lòng bạn đang trĩu nặng điều gì?
-                    </p>
-                </div>
-
-                <div class="glass-card rounded-xl p-8 shadow-2xl">
-                    <h2
-                        class="text-xl title-font text-yellow-200 mb-6 border-b border-yellow-500/30 pb-2 inline-block"
-                    >
-                        Hãy trao gánh nặng cho Người nhé
-                    </h2>
-
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <button
-                            onclick="navigate('direction')"
-                            class="option-btn border border-gray-500 rounded-lg p-4 text-left hover:border-yellow-400 group"
-                        >
-                            <div class="flex items-center">
-                                <span
-                                    class="bg-gray-800 p-2 rounded-full mr-3 group-hover:bg-yellow-600 transition-colors"
-                                >
-                                    <i
-                                        class="fas fa-compass text-yellow-200"
-                                    ></i>
-                                </span>
-                                <div>
-                                    <h3 class="font-bold text-gray-100">
-                                        Mất phương hướng
-                                    </h3>
-                                    <p class="text-xs text-gray-400 mt-1">
-                                        Không biết đi về đâu...
-                                    </p>
-                                </div>
-                            </div>
-                        </button>
-
-                        <button
-                            onclick="navigate('focus')"
-                            class="option-btn border border-gray-500 rounded-lg p-4 text-left hover:border-yellow-400 group"
-                        >
-                            <div class="flex items-center">
-                                <span
-                                    class="bg-gray-800 p-2 rounded-full mr-3 group-hover:bg-yellow-600 transition-colors"
-                                >
-                                    <i class="fas fa-brain text-yellow-200"></i>
-                                </span>
-                                <div>
-                                    <h3 class="font-bold text-gray-100">
-                                        Mất tập trung
-                                    </h3>
-                                    <p class="text-xs text-gray-400 mt-1">
-                                        Tâm trí lang thang...
-                                    </p>
-                                </div>
-                            </div>
-                        </button>
-
-                        <button
-                            onclick="navigate('sadness')"
-                            class="option-btn border border-gray-500 rounded-lg p-4 text-left hover:border-yellow-400 group"
-                        >
-                            <div class="flex items-center">
-                                <span
-                                    class="bg-gray-800 p-2 rounded-full mr-3 group-hover:bg-yellow-600 transition-colors"
-                                >
-                                    <i
-                                        class="fas fa-cloud-rain text-yellow-200"
-                                    ></i>
-                                </span>
-                                <div>
-                                    <h3 class="font-bold text-gray-100">
-                                        Buồn phiền & Cô đơn
-                                    </h3>
-                                    <p class="text-xs text-gray-400 mt-1">
-                                        Cảm thấy trĩu nặng...
-                                    </p>
-                                </div>
-                            </div>
-                        </button>
-
-                        <button
-                            onclick="navigate('anxiety')"
-                            class="option-btn border border-gray-500 rounded-lg p-4 text-left hover:border-yellow-400 group"
-                        >
-                            <div class="flex items-center">
-                                <span
-                                    class="bg-gray-800 p-2 rounded-full mr-3 group-hover:bg-yellow-600 transition-colors"
-                                >
-                                    <i
-                                        class="fas fa-heart-broken text-yellow-200"
-                                    ></i>
-                                </span>
-                                <div>
-                                    <h3 class="font-bold text-gray-100">
-                                        Lo âu & Sợ hãi
-                                    </h3>
-                                    <p class="text-xs text-gray-400 mt-1">
-                                        Bất an trong lòng...
-                                    </p>
-                                </div>
-                            </div>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- View 2: Trang Chữa Lành (Ẩn mặc định) -->
-            <div id="healing-view" class="hidden fade-in max-w-3xl w-full">
-                <div
-                    class="glass-card rounded-xl p-8 md:p-12 shadow-2xl relative"
-                >
-                    <!-- Nút quay lại -->
-                    <button
-                        onclick="goBack()"
-                        class="absolute top-4 left-4 text-gray-400 hover:text-white transition-colors flex items-center text-sm"
-                    >
-                        <i class="fas fa-arrow-left mr-2"></i> Quay lại
-                    </button>
-
-                    <div class="text-center mb-8 mt-4">
+        <!-- Main Content Wrapper: Thay đổi cách xử lý scroll để không bị mất đầu trang -->
+        <div class="relative z-10 h-full w-full overflow-y-auto">
+            <!-- Inner Container: Dùng min-h-full để căn giữa khi nội dung ít, và giãn ra khi nội dung nhiều -->
+            <div
+                class="min-h-full flex flex-col items-center justify-center p-4 py-10 md:py-14 text-center"
+            >
+                <!-- View 1: Menu Lựa Chọn -->
+                <div id="home-view" class="fade-in max-w-5xl w-full">
+                    <div class="mb-6">
+                        <!-- Icon nhà thờ -->
                         <i
-                            class="fas fa-bible text-4xl text-yellow-500 mb-4"
+                            class="fas fa-church text-5xl text-yellow-500 mb-4 opacity-90 drop-shadow-lg"
                         ></i>
-                        <h2
-                            id="topic-title"
-                            class="text-3xl font-bold text-yellow-100 title-font"
-                        ></h2>
+
+                        <!-- Tiêu đề Bêtania giữ font Cinzel -->
+                        <h1
+                            class="brand-font text-5xl md:text-7xl font-bold text-yellow-50 mb-2 drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)] tracking-wider"
+                        >
+                            Bêtania
+                        </h1>
+
+                        <p
+                            class="text-gray-300 font-light italic text-sm md:text-base tracking-wide mt-2"
+                        >
+                            "Hãy vào đây, hỡi những tâm hồn đang mệt mỏi"
+                        </p>
                     </div>
 
-                    <!-- Lời Chúa -->
                     <div
-                        class="mb-8 p-6 bg-black/20 rounded-lg border-l-4 border-yellow-600 text-left"
+                        class="glass-card rounded-3xl p-6 md:p-8 shadow-2xl mx-auto w-full"
                     >
-                        <p
-                            id="bible-verse"
-                            class="text-xl md:text-2xl leading-relaxed italic text-gray-100 mb-4 font-serif"
+                        <h2
+                            class="text-xl md:text-2xl font-semibold text-yellow-100 mb-8 pb-4 inline-block border-b border-yellow-500/30"
                         >
-                            <!-- Nội dung kinh thánh sẽ được JS điền vào -->
-                        </p>
-                        <p
-                            id="bible-source"
-                            class="text-right text-yellow-400 font-bold text-sm uppercase tracking-wider"
-                        >
-                            <!-- Nguồn trích dẫn -->
-                        </p>
-                    </div>
+                            Hôm nay, gánh nặng của bạn là gì?
+                        </h2>
 
-                    <!-- Suy niệm ngắn -->
-                    <div class="text-left space-y-4">
-                        <h3
-                            class="text-lg font-bold text-yellow-200 title-font border-b border-gray-700 pb-2"
+                        <!-- Grid Buttons Container (Được điền tự động bởi JS) -->
+                        <div
+                            id="options-grid"
+                            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-left"
                         >
-                            Suy Niệm Ngắn
-                        </h3>
-                        <p
-                            id="reflection-text"
-                            class="text-gray-300 leading-relaxed"
-                        >
-                            <!-- Lời suy niệm -->
-                        </p>
+                            <!-- Javascript sẽ render các nút vào đây -->
+                        </div>
                     </div>
+                </div>
 
-                    <div class="mt-8 pt-6 border-t border-gray-700">
-                        <p class="text-sm text-gray-400 italic">
-                            "Hãy vững tin, mọi sự rồi sẽ ổn thôi."
-                        </p>
+                <!-- View 2: Trang Chữa Lành -->
+                <div id="healing-view" class="hidden fade-in max-w-3xl w-full">
+                    <div
+                        class="glass-card rounded-3xl p-6 md:p-12 shadow-2xl relative"
+                    >
+                        <button
+                            onclick="goBack()"
+                            class="absolute top-6 left-6 text-gray-400 hover:text-white transition-colors flex items-center text-sm font-semibold py-2 px-3 rounded-lg hover:bg-white/10"
+                        >
+                            <i class="fas fa-arrow-left mr-2"></i> Quay lại
+                        </button>
+
+                        <div class="text-center mb-8 mt-8">
+                            <div
+                                class="inline-block p-4 rounded-full bg-yellow-500/10 mb-4"
+                            >
+                                <i
+                                    class="fas fa-bible text-4xl text-yellow-500"
+                                ></i>
+                            </div>
+                            <h2
+                                id="topic-title"
+                                class="text-2xl md:text-4xl font-bold text-yellow-50 tracking-tight leading-tight"
+                            ></h2>
+                        </div>
+
+                        <!-- Container cho các câu Kinh Thánh -->
+                        <div id="verses-container" class="space-y-6 mb-8">
+                            <!-- Javascript sẽ render các thẻ câu kinh thánh vào đây -->
+                        </div>
+
+                        <div class="text-left space-y-4 px-2 md:px-4">
+                            <h3
+                                class="text-lg font-bold text-yellow-200 border-b border-gray-700/50 pb-2 inline-block"
+                            >
+                                Suy Niệm
+                            </h3>
+                            <p
+                                id="reflection-text"
+                                class="text-gray-200 leading-relaxed text-lg font-light text-justify"
+                            ></p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Logic Script -->
         <script>
-            // Dữ liệu nội dung chữa lành
-            const contentData = {
-                direction: {
-                    title: "Khi Mất Phương Hướng",
-                    verse: "Chúa là mục tử chăn dắt tôi, tôi chẳng thiếu thốn gì. Trong đồng cỏ xanh tươi, Người cho tôi nằm nghỉ. Người đưa tôi tới dòng nước trong lành và bổ sức cho tôi. Người dẫn tôi đi trên đường ngay nẻo chính vì danh dự của Người.",
-                    source: "Thánh Vịnh 23:1-3",
+            // --- CẤU HÌNH DỮ LIỆU ---
+            // Đã cập nhật: Mỗi mục có thể chứa nhiều verse (câu kinh thánh)
+            // Lời suy niệm được viết lại tổng quát cho mọi người
+            const burdens = [
+                {
+                    id: "direction",
+                    icon: "fa-compass",
+                    label: "Mất phương hướng",
+                    desc: "Lạc lối giữa ngã ba đường...",
+                    title: "Khi Bạn Cảm Thấy Mất Phương Hướng",
+                    verses: [
+                        {
+                            text: "Chúa là mục tử chăn dắt tôi, tôi chẳng thiếu thốn gì. Trong đồng cỏ xanh tươi, Người cho tôi nằm nghỉ. Người đưa tôi tới dòng nước trong lành và bổ sức cho tôi.",
+                            source: "Thánh Vịnh 23:1-3",
+                        },
+                        {
+                            text: "Tai ngươi sẽ nghe tiếng nói phía sau: 'Ðây là đường, hãy đi theo đó', khi ngươi muốn rẽ bên phải hay bên trái.",
+                            source: "I-sai-a 30:21",
+                        },
+                    ],
                     reflection:
-                        "Huy à, đôi khi lạc lối không phải là đi sai đường, mà là dấu hiệu cho thấy Chúa muốn bạn dừng lại một chút để định vị lại 'la bàn' của trái tim. Đừng cố gắng nhìn thấy toàn bộ cầu thang, chỉ cần bước đi bước đầu tiên với sự tin thác.",
+                        "Cuộc sống đôi khi giống như việc lái xe trong sương mù, ta chẳng thể thấy gì quá vài mét trước mặt. Nhưng bạn biết không, đức tin không đòi hỏi ta phải có tấm bản đồ nhìn thấy rõ lộ trình từ A đến Z, mà chỉ cần can đảm bước trọn vẹn từng bước chân một. Đừng hoang mang khi Chúa tắt bớt những ánh đèn hào nhoáng xung quanh, có lẽ đó là cách Người giúp mắt bạn quen dần với ánh sáng dịu dàng của Ngài. Hãy dừng lại, cầu nguyện, và lắng nghe tiếng nói nhỏ nhẹ trong tim, vì la bàn của Chúa chưa bao giờ chỉ sai hướng.",
                 },
-                focus: {
-                    title: "Khi Mất Tập Trung",
-                    verse: "Anh em đừng lo lắng gì cả, nhưng trong mọi hoàn cảnh, anh em cứ đem lời cầu khẩn, van xin và tạ ơn, mà giãi bày trước mặt Thiên Chúa những điều anh em thỉnh nguyện.",
-                    source: "Phi-líp-phê 4:6",
+                {
+                    id: "focus",
+                    icon: "fa-brain",
+                    label: "Mất tập trung",
+                    desc: "Tâm trí lang thang...",
+                    title: "Khi Bạn Mất Tập Trung",
+                    verses: [
+                        {
+                            text: "Anh em đừng lo lắng gì cả, nhưng trong mọi hoàn cảnh, anh em cứ đem lời cầu khẩn, van xin và tạ ơn, mà giãi bày trước mặt Thiên Chúa.",
+                            source: "Phi-líp-phê 4:6",
+                        },
+                        {
+                            text: "Anh em hãy hướng lòng trí về những gì thuộc thượng giới, chứ đừng chú tâm vào những gì thuộc hạ giới.",
+                            source: "Cô-lô-xê 3:2",
+                        },
+                    ],
                     reflection:
-                        "Sự xao nhãng thường đến từ những lo âu ẩn giấu. Hãy hít thở sâu, dâng những tiếng ồn trong đầu cho Chúa. Làm từng việc nhỏ một thôi, Chúa không yêu cầu bạn phải hoàn hảo, Ngài chỉ cần bạn hiện diện trọn vẹn trong giây phút này.",
+                        "Sự xao nhãng thường không đến từ bên ngoài, mà là tiếng ồn của những nỗi lo âu bên trong. Chúng ta sợ bị bỏ lỡ, sợ không hoàn hảo, sợ tương lai. Hãy thử thực tập sự hiện diện: Chúa không ở quá khứ hay tương lai, Ngài là Đấng Hiện Hữu ngay giây phút này. Khi bạn rửa bát, hãy chỉ rửa bát với lòng biết ơn. Khi bạn làm việc, hãy dâng công việc đó như một lời kinh. Sự tập trung sẽ quay lại khi tâm hồn tìm được điểm tựa bình an nơi Chúa.",
                 },
-                sadness: {
-                    title: "Khi Buồn Phiền",
-                    verse: "Tất cả những ai đang vất vả mang gánh nặng nề, hãy đến cùng tôi, tôi sẽ cho nghỉ ngơi bồi dưỡng. Anh em hãy mang lấy ách của tôi, và hãy học với tôi, vì tôi có lòng hiền hậu và khiêm nhường.",
-                    source: "Mát-thêu 11:28-29",
+                {
+                    id: "sadness",
+                    icon: "fa-cloud-rain",
+                    label: "Buồn phiền",
+                    desc: "Lòng nặng trĩu nỗi buồn...",
+                    title: "Khi Bạn Buồn Phiền & Cô Đơn",
+                    verses: [
+                        {
+                            text: "Tất cả những ai đang vất vả mang gánh nặng nề, hãy đến cùng tôi, tôi sẽ cho nghỉ ngơi bồi dưỡng.",
+                            source: "Mát-thêu 11:28",
+                        },
+                        {
+                            text: "Chúa gần gũi những tấm lòng tan vỡ, cứu những tâm thần thất bát ê chề.",
+                            source: "Thánh Vịnh 34:19",
+                        },
+                    ],
                     reflection:
-                        "Buồn một chút cũng không sao đâu. Ngay cả Chúa Giê-su cũng từng khóc mà. Hãy để nỗi buồn trôi qua như một đám mây, đừng giữ nó lại làm của riêng. Chúa đang ở ngay bên cạnh, sẵn sàng ngồi xuống nghe bạn kể lể đấy.",
+                        "Buồn không phải là tội lỗi, và khóc không phải là yếu đuối. Ngay cả Chúa Giê-su cũng từng rơi lệ trước mộ bạn mình. Đừng cố gắng kìm nén hay giả vờ mạnh mẽ trước mặt Chúa. Hãy để nỗi buồn tuôn chảy như một dòng sông, và tin rằng Chúa đang ở đó, không phải để phán xét, mà để cùng ngồi xuống, lắng nghe và hứng lấy từng giọt nước mắt của bạn. Sau cơn mưa, bầu trời sẽ lại sáng.",
                 },
-                anxiety: {
-                    title: "Khi Lo Âu",
-                    verse: "Thầy để lại bình an cho anh em, Thầy ban cho anh em bình an của Thầy. Thầy ban cho anh em không theo kiểu thế gian. Anh em đừng xao xuyến cũng đừng sợ hãi.",
-                    source: "Gio-an 14:27",
+                {
+                    id: "anxiety",
+                    icon: "fa-bolt",
+                    label: "Lo âu & Sợ hãi",
+                    desc: "Bất an về tương lai...",
+                    title: "Khi Bạn Lo Âu & Sợ Hãi",
+                    verses: [
+                        {
+                            text: "Thầy để lại bình an cho anh em, Thầy ban cho anh em bình an của Thầy. Lòng anh em đừng xao xuyến cũng đừng sợ hãi.",
+                            source: "Gio-an 14:27",
+                        },
+                        {
+                            text: "Mọi âu lo, hãy trút cả cho Người, vì Người chăm sóc anh em.",
+                            source: "1 Phê-rô 5:7",
+                        },
+                    ],
                     reflection:
-                        "Nỗi sợ thường là cái bóng của những điều chưa xảy ra. Nhưng Chúa là Đấng của hiện tại. Bình an của Chúa không phải là không có bão tố, mà là sự tĩnh lặng ngay giữa tâm bão. Hãy tin rằng ngày mai sẽ có ân sủng của ngày mai.",
+                        "Nỗi sợ hãi thường là cái bóng phóng đại của những điều chưa xảy ra. Chúng ta lo lắng vì nghĩ rằng mình phải tự gánh vác mọi thứ. Nhưng Chúa mời gọi bạn buông bỏ quyền kiểm soát. Bình an của Chúa không có nghĩa là không có bão tố, mà là sự tĩnh lặng sâu thẳm ngay giữa tâm bão, vì biết rằng Thuyền Trưởng Giê-su đang ở trên thuyền. Hãy hít thở sâu và thì thầm: 'Giê-su ơi, con tín thác vào Ngài'.",
                 },
-            };
+                {
+                    id: "peer_pressure",
+                    icon: "fa-users",
+                    label: "Áp lực đồng lứa",
+                    desc: "Thấy mình thua kém...",
+                    title: "Khi Áp Lực Đồng Trang Lứa Đè Nặng",
+                    verses: [
+                        {
+                            text: "Mỗi người hãy xem xét việc làm của chính mình, bấy giờ sẽ có lý do để hãnh diện vì chính mình, chứ không phải vì so sánh với người khác.",
+                            source: "Ga-lát 6:4",
+                        },
+                        {
+                            text: "Vì chính Ta biết các kế hoạch Ta định làm cho các ngươi - sấm ngôn của ĐỨC CHÚA -, kế hoạch thịnh vượng chứ không phải tai ương, để các ngươi có một tương lai và một niềm hy vọng.",
+                            source: "Giê-rê-mi-a 29:11",
+                        },
+                    ],
+                    reflection:
+                        "Mỗi bông hoa trong vườn Chúa đều có thời điểm nở rộ riêng. Hoa hướng dương không cần ghen tị với hoa hồng, và bạn cũng không cần phải sống cuộc đời của người khác. Sự so sánh là kẻ đánh cắp niềm vui. Chúa tạo dựng bạn là 'phiên bản giới hạn', độc nhất vô nhị với một sứ mạng riêng biệt mà không ai khác có thể thay thế. Hãy kiên nhẫn với chính mình và tin vào thời điểm thánh của Chúa.",
+                },
+                {
+                    id: "burnout",
+                    icon: "fa-battery-quarter",
+                    label: "Kiệt sức",
+                    desc: "Mệt mỏi, cạn năng lượng...",
+                    title: "Khi Bạn Cảm Thấy Kiệt Sức (Burnout)",
+                    verses: [
+                        {
+                            text: "Chính anh em hãy lánh riêng ra đến một nơi thanh vắng mà nghỉ ngơi đôi chút.",
+                            source: "Mác-cô 6:31",
+                        },
+                        {
+                            text: "Anh em hãy mang lấy ách của tôi, và hãy học với tôi, vì tôi có lòng hiền hậu và khiêm nhường. Tâm hồn anh em sẽ được nghỉ ngơi bồi dưỡng.",
+                            source: "Mát-thêu 11:29",
+                        },
+                    ],
+                    reflection:
+                        "Trong một thế giới tôn vinh sự bận rộn, nghỉ ngơi đôi khi cảm giác như một sự lãng phí. Nhưng hãy nhớ rằng, ngay cả Thiên Chúa cũng nghỉ ngơi vào ngày thứ bảy. Nghỉ ngơi là một hành động thánh thiêng, là lời tuyên xưng rằng thế giới này vận hành nhờ ân sủng Chúa chứ không chỉ nhờ sức lực của ta. Hãy cho phép mình được dừng lại, được ngủ một giấc ngon, được tắt điện thoại, để tái tạo lại năng lượng cho hành trình dài phía trước.",
+                },
+                {
+                    id: "heartbreak",
+                    icon: "fa-heart-crack",
+                    label: "Tổn thương",
+                    desc: "Trái tim tan vỡ...",
+                    title: "Khi Trái Tim Bạn Bị Tổn Thương",
+                    verses: [
+                        {
+                            text: "Chúa chữa trị bao cõi lòng tan vỡ, những vết thương, Ngài băng bó cho lành.",
+                            source: "Thánh Vịnh 147:3",
+                        },
+                        {
+                            text: "Đừng sợ hãi: có Ta ở với ngươi. Đừng nhớn nhác: có Ta là Thiên Chúa ngươi thờ. Ta ngự trị ngươi, Ta trợ giúp ngươi.",
+                            source: "I-sai-a 41:10",
+                        },
+                    ],
+                    reflection:
+                        "Trái tim tan vỡ là nơi đau đớn nhất, nhưng cũng là nơi ánh sáng ân sủng có thể chiếu vào sâu thẳm nhất. Đừng vội vã lấp đầy khoảng trống đó bằng những niềm vui tạm bợ. Hãy mang trái tim vụn vỡ ấy đến trước Thánh Thể. Chỉ có Tình Yêu Thập Giá mới đủ lớn để bao dung và chữa lành mọi vết thương lòng. Hãy tin rằng, từ những mảnh vỡ này, Chúa có thể kiến tạo nên một bức tranh tuyệt đẹp.",
+                },
+                {
+                    id: "guilt",
+                    icon: "fa-hands-praying",
+                    label: "Mặc cảm tội lỗi",
+                    desc: "Thấy mình bất xứng...",
+                    title: "Khi Bạn Mặc Cảm Tội Lỗi",
+                    verses: [
+                        {
+                            text: "Nếu chúng ta thú nhận tội lỗi, Thiên Chúa là Đấng trung thành và công chính sẽ tha tội cho chúng ta, và thanh tẩy chúng ta sạch mọi điều bất chính.",
+                            source: "1 Gio-an 1:9",
+                        },
+                        {
+                            text: "Trên trời sẽ vui mừng vì một người tội lỗi hối cải hơn là vì chín mươi chín người công chính không cần phải hối cải.",
+                            source: "Lu-ca 15:7",
+                        },
+                    ],
+                    reflection:
+                        "Cám dỗ lớn nhất của ma quỷ không phải là làm cho ta phạm tội, mà là làm cho ta tin rằng tội của ta lớn hơn lòng thương xót của Chúa. Đừng để mặc cảm giam cầm bạn trong bóng tối. Chúa không đếm số lần bạn vấp ngã, Ngài đếm số lần bạn can đảm đứng dậy và trở về. Vòng tay của Người Cha Nhân Hậu luôn rộng mở trước khi bạn kịp nói lời xin lỗi. Hãy đứng dậy và đi về phía ánh sáng.",
+                },
+            ];
 
+            // --- LOGIC HIỂN THỊ ---
             const homeView = document.getElementById("home-view");
             const healingView = document.getElementById("healing-view");
+            const gridContainer = document.getElementById("options-grid");
+            const versesContainer = document.getElementById("verses-container");
 
-            // Hàm chuyển trang
-            function navigate(type) {
-                const data = contentData[type];
+            // Hàm render danh sách nút bấm
+            function renderBurdens() {
+                gridContainer.innerHTML = "";
+
+                burdens.forEach((item) => {
+                    const btnHTML = `
+                        <button onclick="navigate('${item.id}')" class="option-btn border border-gray-600/50 rounded-2xl p-4 group bg-gray-800/30 w-full text-left">
+                            <div class="flex items-center space-x-4">
+                                <div class="bg-gray-700/50 p-3 rounded-xl group-hover:bg-yellow-600 transition-colors shadow-lg shrink-0">
+                                    <i class="fas ${item.icon} text-yellow-200 text-lg"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-gray-100 text-sm md:text-base">${item.label}</h3>
+                                    <p class="text-xs text-gray-400 mt-1">${item.desc}</p>
+                                </div>
+                            </div>
+                        </button>
+                    `;
+                    gridContainer.innerHTML += btnHTML;
+                });
+            }
+
+            renderBurdens();
+
+            function navigate(id) {
+                const data = burdens.find((b) => b.id === id);
                 if (!data) return;
 
-                // Cập nhật nội dung
+                // Cập nhật tiêu đề và suy niệm
                 document.getElementById("topic-title").innerText = data.title;
-                document.getElementById(
-                    "bible-verse"
-                ).innerText = `"${data.verse}"`;
-                document.getElementById("bible-source").innerText = data.source;
                 document.getElementById("reflection-text").innerText =
                     data.reflection;
 
-                // Hiệu ứng chuyển đổi
+                // Xử lý hiển thị danh sách verses (mới)
+                versesContainer.innerHTML = ""; // Xóa nội dung cũ
+
+                data.verses.forEach((v) => {
+                    const verseHTML = `
+                        <div class="p-6 md:p-8 bg-black/40 rounded-2xl border-l-4 border-yellow-500 text-left relative shadow-inner">
+                            <i class="fas fa-quote-left absolute top-4 left-4 text-yellow-500/20 text-3xl"></i>
+                            <p class="text-lg md:text-2xl leading-relaxed italic text-gray-100 mb-4 font-medium relative z-10 pl-2">
+                                "${v.text}"
+                            </p>
+                            <p class="text-right text-yellow-400 font-bold text-sm uppercase tracking-widest mt-2">
+                                ${v.source}
+                            </p>
+                        </div>
+                    `;
+                    versesContainer.innerHTML += verseHTML;
+                });
+
                 homeView.classList.add("hidden");
                 healingView.classList.remove("hidden");
 
                 // Reset animation
                 healingView.classList.remove("fade-in");
-                void healingView.offsetWidth; // trigger reflow
+                void healingView.offsetWidth;
                 healingView.classList.add("fade-in");
             }
 
-            // Hàm quay lại
             function goBack() {
                 healingView.classList.add("hidden");
                 homeView.classList.remove("hidden");
 
-                // Reset animation
                 homeView.classList.remove("fade-in");
-                void homeView.offsetWidth; // trigger reflow
+                void homeView.offsetWidth;
                 homeView.classList.add("fade-in");
             }
         </script>
